@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import Movie from "../Movie/Movie";
 import styles from "./Movies.module.css";
+import Button from "../ui/Button";
 
 function Movies(props) {
   // Destructing props: state movies
@@ -15,10 +16,6 @@ function Movies(props) {
       poster: "https://picsum.photos/300/400",
     };
 
-    /**
-     * Update state movies: setMovies
-     * Melakukan teknik spread untuk copy dan merge array
-     */
     setMovies([...movies, movie]);
   }
 
@@ -32,7 +29,7 @@ function Movies(props) {
               return <Movie key={movie.id} movie={movie} />;
             })}
           </div>
-          <button onClick={handleClick}>Add Movie</button>
+          <Button size="lg" variant="secondary" onClick={handleClick}>Add Movie</Button>
         </section>
       </div>
     </div>

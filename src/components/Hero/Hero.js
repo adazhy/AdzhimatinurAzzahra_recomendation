@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import styles from "./Hero.module.css";
+import Button from "../ui/Button";
+import StyledHero from "./Hero.styled";
 
 function Hero() {
   // Membuat state
@@ -21,25 +22,26 @@ function Hero() {
 
   console.log(movie);
   return (
-    <div className={styles.container}>
-      <section className={styles.hero}>
-        <div className={styles.hero__left}>
-          <h2 className={styles.hero__title}>{movie.Title}</h2>
-          <h3 className={styles.hero__genre}>
+    <StyledHero>
+        <section className="hero">
+        <div className="hero__left">
+          <h2>{movie.Title}</h2>
+          <h3>
             Genre: {movie.Genre}
           </h3>
-          <p className={styles.hero__description}>{movie.Plot}</p>
-          <button className={styles.hero__button}>Watch</button>
+          <p>{movie.Plot}</p>
+          {/* <button className={styles.hero__button}>Watch</button> */}
+          <Button variant="secondary" tpg="sm" font="font-family" full>Watch</Button>
         </div>
         <div className="hero__right">
           <img
-            className={styles.hero__image}
-            src={movie.Poster}
+            // src={movie.Poster}
+            src="https://picsum.photos/536/354"
             alt={movie.Title}
           />
         </div>
       </section>
-    </div>
+    </StyledHero>
   );
 }
 
