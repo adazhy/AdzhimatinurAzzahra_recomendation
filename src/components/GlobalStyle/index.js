@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
     }
 `;
