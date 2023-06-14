@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import Movie from "../Movie/Movie";
 import styles from "./Movies.module.css";
-import Button from "../ui/Button";
+import Button from "../ui/Button/Button";
 
 function Movies(props) {
   // Destructing props: state movies

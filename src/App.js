@@ -11,6 +11,7 @@ import Layout from "./Layout";
 import theme from "./utils/constants/theme";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./components/GlobalStyle";
+import DetailMovie from "./components/DetailMovie/DetailMovie";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/movie/popular" element={<PopularMovie />} />
             <Route path="/movie/now" element={<NowPlayingMovie />} />
             <Route path="/movie/top" element={<TopRatedMovie />} />
+            <Route path="/movie/:id" element={<DetailMovie />} />
           </Routes>
         </Layout>  
       </ThemeProvider>  

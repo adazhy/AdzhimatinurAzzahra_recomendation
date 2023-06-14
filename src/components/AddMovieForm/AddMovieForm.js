@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 import { useState } from "react";
 import Alert from "../Alert/Alert";
 import styles from "./AddMovieForm.module.css";
-import Button from "../ui/Button";
+import Button from "../ui/Button/Button";
 
 // Menangkap props
 function AddMovieForm(props) {
