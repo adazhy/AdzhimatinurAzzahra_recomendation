@@ -16,12 +16,12 @@ const StyledDetailMovie = styled.div`
   h2 {
     font-size: 2.44rem;
     margin-bottom: 0.5rem;
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.color.primary};
   }
   h3 {
     font-size: 1.59rem;
     margin-bottom: 0.5rem;
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.color.secondary};
   }
   p {
     text-align: justify;

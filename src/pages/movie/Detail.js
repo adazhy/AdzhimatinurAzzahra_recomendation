@@ -5,28 +5,28 @@ import { useEffect } from "react";
 import axios from "axios";
 import Movies from "../../components/Movies/Movies";
 import ENDPOINTS from "../../utils/constants/endpoints";
+import { useDispatch } from "react-redux";
 
 function Detail() {
     const params = useParams();
-    const [movies, setMovies] = useState([]);
-    // const API_KEY = process.env.REACT_APP_API_KEY;
+    // const [movies, setMovies] = useState([]);
+
+    const dispatch = useDispatch();
     
     useEffect(() => {
         getRecommendationMovies();
     }, [params.id])
 
-    function getRecommendationMovies() {
+    async function getRecommendationMovies() {
         // const URL = `https://api.themoviedb.org/3/movie/${params.id}/recomendations?api_key=${API_KEY}`;
-        const response = axios(ENDPOINTS.RECOMMENDATION(params));
-        setMovies(response.date.results);
+        const response = await axios (ENDPOINTS.RECOMMENDATION(params));
+        dispatch(updateDetails(response.data.results))
     }
-
-    console.log(movies);
 
     return(
         <>
             <DetailMovie />
-            <Movies movies={movies} />
+            <Movies title="Recommendation Movies" />
         </>
     );
 }

@@ -2,7 +2,9 @@ import StyledMovie from "./Movie.styled";
 import { Link } from "react-router-dom";
 
 function Movie(props) {
-  const { movie } = props;
+  const {movie} = props;
+
+  // const movie = useSelector((store) => store.movies.movies)
 
   return (
     <StyledMovie>

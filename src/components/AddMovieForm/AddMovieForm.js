@@ -3,11 +3,17 @@ import { useState } from "react";
 import Alert from "../Alert/Alert";
 import styles from "./AddMovieForm.module.css";
 import Button from "../ui/Button/Button";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addMovie } from "../../features/moviesSlice";
 
 // Menangkap props
-function AddMovieForm(props) {
-  // Destructing props: state movies
-  const { movies, setMovies } = props;
+function AddMovieForm() {
+
+  const dispatch = useDispatch();
+
+  //useNavigation
+  const navigation = useNavigate();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -16,11 +22,7 @@ function AddMovieForm(props) {
     type: "",
   });
 
-  /**
-   * TODO
-   * - PROBLEM: 1 ERROR 1 STATE.
-   * - TODO: REFACTOR SEMUA ERROR JADI 1 STATE.
-   */
+  
   const [ isFormMovieError, setIsFormMovieError] = useState({
     isTitleError: false,
     isDateError: false,
@@ -32,15 +34,9 @@ function AddMovieForm(props) {
   const { isTitleError, isDateError, isPosterError, isTypeError} = isFormMovieError;
 
 
-  function handleChange(e) {
-    // Destructing name dan value.
+  function handleChange(e) { 
     const { name, value } = e.target;
 
-    /**
-     * Mengupdate state berupa object:
-     * - Menggunakan spread operator:
-     * - Update property berdasarkan apapun nilai name.
-     */
     setFormData({
       ...formData,
       [name]: value,
@@ -78,7 +74,7 @@ function AddMovieForm(props) {
     }
   }
 
-  function addMovie() {
+  function submitMovie() {
     const movie = {
       id: nanoid(),
       title: title,
@@ -87,14 +83,15 @@ function AddMovieForm(props) {
       poster: poster,
     };
 
-    // SOLVED: HOW TO ADD MOVIE TO MOVIES :)
-    setMovies([...movies, movie]);
+    dispatch(addMovie(movie));
+
+    navigation("/");
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    validate() && addMovie();
+    validate() && submitMovie();
   }
 
   const { title, date, poster, type } = formData;
@@ -126,10 +123,6 @@ function AddMovieForm(props) {
                 // Memberikan event onChange
                 onChange={handleChange}
               />
-              {/*
-               * Menambahkan infline if: operator &&
-               * Jika isTitleError true maka render error
-               */}
               {isTitleError && <Alert>Title Wajib Diisi</Alert>}
             </div>
             <div className={styles.form__group}>
@@ -146,10 +139,7 @@ function AddMovieForm(props) {
                 // Memberikan event onChange
                 onChange={handleChange}
               />
-              {/*
-               * Menambahkan infline if: operator &&
-               * Jika isDateError true maka render error
-               */}
+              
               {isDateError && <Alert>Date Wajib Diisi</Alert>}
             </div>
             <div className={styles.form__group}>

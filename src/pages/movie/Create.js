@@ -1,7 +1,11 @@
+import Hero from "../../components/Hero/Hero";
+import AddMovieForm from "../../components/AddMovieForm/AddMovieForm";
+
 function CreateMovie() {
   return (
     <>
-      <h2>Create Movie</h2>
+      <Hero/>
+      <AddMovieForm />
     </>
   );
 }
